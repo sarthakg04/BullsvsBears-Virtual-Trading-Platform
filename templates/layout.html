@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta content="initial-scale=1, width=device-width" name="viewport" />
+
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+
+    <link rel="stylesheet" href="static/css/alert.css" />
+    <link
+      href="{{ url_for('static', filename='styles.css') }}"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/39c8bc8c71.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Trade Arena: {% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <!---------------------------------------NAVBAR-------------------------------------->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <a class="navbar-brand" href="{{ url_for('index') }}"
+        ><img src="static/images/logo.png" class="logo" />&nbsp;&nbsp;&nbsp;&nbsp;Bull vs Bear</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if session.user_id %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('wallet') }}"
+              ><i class="fas fa-wallet"></i> ₹{{"%.2f"|format(cash)}}</a
+            >
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button data-toggle="dropdown" class="userButton">
+                <i class="fas fa-user-circle"></i> {{user}}
+              </button>
+              <div
+                class="dropdown-menu dropdown-menu-right"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a class="dropdown-item" href="{{ url_for('changepass') }}"
+                  >Change Password</a
+                >
+                <a class="dropdown-item" href="{{ url_for('logout') }}"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </li>
+        </ul>
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">Log In</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </nav>
+    <nav class="category-nav">
+      <button class="category-nav-link">
+        <a href="{{ url_for('quote') }}">Quote</a>
+      </button>
+      <button class="category-nav-link">
+        <a href="{{ url_for('trade') }}">Buy/Sell</a>
+      </button>
+      <button class="category-nav-link">
+        <a href="{{ url_for('history')}}">History</a>
+      </button>
+      <button class="category-nav-link">
+        <a href="{{ url_for('portfolio')}}">Portfolio</a>
+      </button>
+      <button class="category-nav-link">
+        <a href="{{ url_for('leaderboard')}}">Leaderboard</a>
+      </button>
+    </nav>
+
+    <!----------------------------NAVBAR END---------------------------------->
+
+    <div class="container">
+      <!----------------------------ALERTS--------------------------------------->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if
+      category=="success" %}
+      <div id="success-box" class="alert">
+        <div class="dot"></div>
+        <div class="dot two"></div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="eye right"></div>
+          <div class="mouth happy"></div>
+        </div>
+        <div class="shadow scale"></div>
+        <div class="message">
+          <span class="alertType">Success!</span>
+          <p class="alertMsg">{{message}}</p>
+        </div>
+        <button class="button-box" data-dismiss="alert">
+          <span class="green alertButton">continue</span>
+        </button>
+      </div>
+      <script>
+        setTimeout(function () {
+          $("#success-box").fadeOut("fast");
+        }, 2000);
+      </script>
+      {% elif category == "error" %}
+      <div id="error-box" class="alert">
+        <div class="dot"></div>
+        <div class="dot two"></div>
+        <div class="face2">
+          <div class="eye"></div>
+          <div class="eye right"></div>
+          <div class="mouth sad"></div>
+        </div>
+        <div class="shadow move"></div>
+        <div class="message">
+          <span class="alertType">Error!</span>
+          <p class="alertMsg">{{message}}</p>
+        </div>
+        <button class="button-box" data-dismiss="alert">
+          <span class="red alertButton">try again</span>
+        </button>
+      </div>
+      {% elif category == "welcome" %}
+      <div class="welcome">
+        <p id="welcomeAlert">Welcome {{user}}</p>
+      </div>
+      <script>
+        setTimeout(function () {
+          $(".welcome").slideToggle("slow");
+        }, 2000);
+      </script>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+    </div>
+    <main>{% block main %}{% endblock %}</main>
+  </body>
+</html>

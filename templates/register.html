@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="static/css/alert.css" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="static/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+      integrity="sha512-rRQtF4V2wtAvXsou4iUAs2kXHi3Lj9NE7xJR77DE7GHsxgY9RTWy93dzMXgDIG8ToiRTD45VsDNdTiUagOFeZA=="
+      crossorigin="anonymous"
+    />
+    <!--===============================================================================================-->
+    <!--<link rel="stylesheet" type="text/css" href="static/css/util.css">-->
+    <link rel="stylesheet" type="text/css" href="static/css/register.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <div class="login100-pic">
+            <img src="static/images/img-01.png" alt="IMG" />
+          </div>
+
+          <form
+            class="login100-form validate-form"
+            action="{{url_for('register')}}"
+            method="post"
+          >
+            <span class="login100-form-title p-b-26"> Register </span>
+            <div class="row row-space">
+              <div class="col-2">
+                <div class="wrap-input100">
+                  <input
+                    class="input100"
+                    type="text"
+                    name="fname"
+                    autocomplete="off"
+                    required
+                  />
+                  <span
+                    class="focus-input100"
+                    data-placeholder="First Name"
+                  ></span>
+                </div>
+              </div>
+              <div class="col-2">
+                <div class="wrap-input100">
+                  <input
+                    class="input100"
+                    type="text"
+                    name="lname"
+                    autocomplete="off"
+                    required
+                  />
+                  <span
+                    class="focus-input100"
+                    data-placeholder="Last Name"
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <div class="wrap-input100">
+              <input
+                class="input100"
+                type="text"
+                name="username"
+                autocomplete="off"
+                required
+              />
+              <span class="focus-input100" data-placeholder="Username"></span>
+            </div>
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter Password"
+            >
+              <span class="btn-show-pass">
+                <i class="zmdi zmdi-eye"></i>
+              </span>
+              <input
+                class="input100"
+                type="password"
+                name="password"
+                autocomplete="off"
+                required
+              />
+              <span class="focus-input100" data-placeholder="Password"></span>
+            </div>
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Re-enter Password"
+            >
+              <span class="btn-show-pass">
+                <i class="zmdi zmdi-eye"></i>
+              </span>
+              <input
+                class="input100"
+                type="password"
+                name="password2"
+                autocomplete="off"
+                required
+              />
+              <span
+                class="focus-input100"
+                data-placeholder="Confirm Password"
+              ></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn">Register</button>
+              </div>
+            </div>
+
+            <div class="text-center p-t-50">
+              <span class="txt1"> Already a Member? </span>
+
+              <a class="txt2" href="{{url_for('login')}}"> Sign In </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+      integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
+      crossorigin="anonymous"
+    ></script>
+    <!--===============================================================================================-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animsition/4.0.2/js/animsition.min.js"
+      integrity="sha512-pYd2QwnzV9JgtoARJf1Ui1q5+p1WHpeAz/M0sUJNprhDviO4zRo12GLlk4/sKBRUCtMHEmjgqo5zcrn8pkdhmQ=="
+      crossorigin="anonymous"
+    ></script>
+    <!--===============================================================================================-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!--===============================================================================================-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+      integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+      crossorigin="anonymous"
+    ></script>
+    <!--===============================================================================================-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.js"
+      integrity="sha512-W76C8qrNYavcaycIH9EijxRuswoS+LCqA1+hq+ECrmjzAbe/SHhTgrwA1uc84husS/Gz50mxOEHPzrcd3sxBqQ=="
+      crossorigin="anonymous"
+    ></script>
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <script src="static/js/main.js"></script>
+
+    <!------ALERTS--------->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if
+    category=="success" %}
+    <div id="success-box" class="alert">
+      <div class="dot"></div>
+      <div class="dot two"></div>
+      <div class="face">
+        <div class="eye"></div>
+        <div class="eye right"></div>
+        <div class="mouth happy"></div>
+      </div>
+      <div class="shadow scale"></div>
+      <div class="message">
+        <span class="alertType">Success!</span>
+        <p class="alertMsg">{{message}}</p>
+      </div>
+      <button class="button-box" data-dismiss="alert">
+        <span class="green alertButton">continue</span>
+      </button>
+    </div>
+    <script>
+      setTimeout(function () {
+        $("#success-box").fadeOut("fast");
+      }, 2000);
+    </script>
+    {% elif category == "error" %}
+    <div id="error-box" class="alert">
+      <div class="dot"></div>
+      <div class="dot two"></div>
+      <div class="face2">
+        <div class="eye"></div>
+        <div class="eye right"></div>
+        <div class="mouth sad"></div>
+      </div>
+      <div class="shadow move"></div>
+      <div class="message">
+        <span class="alertType">Error!</span>
+        <p class="alertMsg">{{message}}</p>
+      </div>
+      <button class="button-box" data-dismiss="alert">
+        <span class="red alertButton">try again</span>
+      </button>
+    </div>
+    {% elif category == "welcome" %}
+    <div class="welcome">
+      <p id="welcomeAlert">Welcome {{user}}</p>
+    </div>
+    <script>
+      setTimeout(function () {
+        $(".welcome").slideToggle("slow");
+      }, 2000);
+    </script>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+  </body>
+</html>

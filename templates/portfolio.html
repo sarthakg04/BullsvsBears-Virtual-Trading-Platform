@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<div class="container">
+
+<div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg)">
+    <div class="card-deck">
+        <div class="card" style="width: 17rem">
+            <div class="card-header">
+                LATEST VALUE
+            </div>
+            <div class="card-body"  >
+                <p class="card-text" id = "lat_value">₹{{ "%.2f"|format(lat_value)}}</p>
+            </div>
+        </div>
+        <div class="card" style="width: 17rem">
+            <div class="card-header">
+                TOP GAINERS/LOSSERS
+            </div>
+            <div class="card-body" >
+                <p class="card-text"><span style="font-size:15px;color:#2dc7b6">{{top_gain}}</span><br><span style="font-size:15px;color:#fd5d5d">{{top_loss}}</span></p>
+            </div>
+        </div>
+        <div class="card" style="width: 17rem">
+            <div class="card-header">
+                OVERALL  GAIN/LOSS
+            </div>
+            <div class="card-body" >
+                <p class="card-text" id="overall_gl">₹{{"%.2f"|format(overall_gl)}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <table class="table table-striped table-borderless">
+        <thead>
+        <tr>
+            <th><h5>Stock<br>Quantity<br>Buy Price</h5></th>
+            <th><h5>Invested Amount</h5></th>
+            <th><h5>Latest Value<br>Day's G/L</h5></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+        <tr>
+            <td><h6><span style="font-size:25px;color: #4e5ec3">{{row[0]}}</span><br>({{row[1]}})<br>₹{{row[2]}}</h6></td>
+            <td><h6><br>₹{{"%.2f"|format(row[1]*row[2])}}</h6></td>
+            <td><h6>₹<span class = "latest">{{row[3]}}</span><br>₹<span class="gl">{{ "%.2f"|format((row[3]-row[2])*row[1])}}</span><span class="up"></span><span class="down"></span></h6></td>
+        </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+
+</div>
+<!--------------------------------UPDATING VALUES------------------------------>
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    var intervalId = setInterval(update_values, 3000);
+    function update_values(){
+        $.getJSON($SCRIPT_ROOT + '/update_portfolio', 
+        function(data){
+            if(data == -1){
+                clearInterval(intervalId);
+                return(-1)
+            }
+            else{
+                var latest = data[0];
+                var gl = data[1];
+            
+                $("#overall_gl").text('₹' + data[3]);
+                if(data[3]>0){
+                    $("#overall_gl").css("color", "#2dc7b6");
+                }
+                else{
+                    $("#overall_gl").css("color", "#fd5d5d");
+                }
+                $("#lat_value").text("₹" + data[2]);
+                var n=$(".gl").length;
+                for(var i=0;i<n;i++){
+                    var gl_element = $(".gl:eq("+ i +")");
+                    var lat_element = $(".latest:eq("+ i +")");
+                    gl_element.text(gl[i]);
+                    lat_element.text(latest[i]);
+
+                    if(gl_element.text()>0){
+                        gl_element.css("color", "#2dc7b6");
+                        $(".up:eq("+ i +")").show();
+                        $(".down:eq("+ i +")").hide();
+                    }
+                    else{
+                        gl_element.css("color", "#fd5d5d");
+                        $(".up:eq("+ i +")").hide();
+                        $(".down:eq("+ i +")").show();    
+                    }
+                }
+            }
+            
+        });
+    };
+    
+</script>
+<!----------------------------------------------------------------->
+</div>
+{% endblock %}

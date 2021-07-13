@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block title %} Leader Board {% endblock %} {%
+block main %}
+<div class="container">
+  <div
+    class="jumbotron card card-image"
+    style="
+      background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);
+    "
+  >
+    {% for row in user_scores %} {% if row["username"]==user %}
+    <table>
+      <tr>
+        <td><h2>{{user_scores.index(row)+1}}</h2></td>
+        <td><h2>{{row["username"]}}</h2></td>
+        <td><h2>{{row["profit"]}}</h2></td>
+        <td><h2>{{row["profit_percent"]}}%</h2></td>
+      </tr>
+    </table>
+    {% endif %} {% endfor %}
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Username</th>
+        <th>Profit</th>
+        <th>Profit Percentage</th>
+      </tr>
+    </thead>
+    {% for row in user_scores %}
+    <tr>
+      <td>{{user_scores.index(row)+1}}</td>
+      <td>{{row["username"]}}</td>
+      <td>{{row["profit"]}}</td>
+      <td>{{row["profit_percent"]}}%</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

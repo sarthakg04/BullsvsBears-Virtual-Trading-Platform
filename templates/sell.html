@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+<div class="buy-container">
+    <span id = "symbol" style="display:none;">{{symbol}}</span>
+    <h2 style = "font-family:OpenSans-Bold;">{{symbol}}</h2>
+    <p style = "font-family:OpenSans-Bold; font-size:15px;">{{name}}</p>
+    <p style = "font-family:OpenSans-Bold; color:#fd5d5d; font-size:20px;">₹<span id="price">{{price}}</span></p>
+    <form action="{{ url_for('sell') }}" method="post">
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="hidden" value="{{symbol}}"/>
+            </div>
+             <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Shares" type="text"/>
+            </div>
+            <div class="form-group">
+                <button class="btn" type="submit" style="color:white;background:#fd5d5d">Sell</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    var intervalId = setInterval(update_values, 3000);
+    function update_values(){
+        $.getJSON($SCRIPT_ROOT + '/update_quote',{
+            symbol: $('#symbol').text()
+        }, 
+        function(data) {
+            $("#price").text(data);
+        });
+    };       
+</script>
+{% endblock %}

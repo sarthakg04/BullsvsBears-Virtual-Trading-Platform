@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+<!------------------------- STOCK TICKER ---------------------------->
+
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "description": "",
+        "proName": "BSE:HDFC"
+      },
+      {
+        "description": "",
+        "proName": "BSE:ICICIBANK"
+      },
+      {
+        "description": "INFOSYS",
+        "proName": "BSE:INFY"
+      },
+      {
+        "description": "KOTAK MAHINDRA",
+        "proName": "BSE:KOTAKBANK"
+      },
+      {
+        "description": "",
+        "proName": "BSE:BHARTIARTL"
+      },
+      {
+        "description": "",
+        "proName": "BSE:SENSEX"
+      },
+      {
+        "description": "",
+        "proName": "BSE:NTPC"
+      },
+      {
+        "description": "",
+        "proName": "BSE:ONGC"
+      },
+      {
+        "description": "",
+        "proName": "BSE:RELIANCE"
+      },
+      {
+        "description": "SBI",
+        "proName": "BSE:SBIN"
+      },
+      {
+        "description": "",
+        "proName": "BSE:TATASTEEL"
+      },
+      {
+        "description": "",
+        "proName": "BSE:TCS"
+      },
+      {
+        "description": "",
+        "proName": "BSE:TITAN"
+      }
+        ],
+        "colorTheme": "light",
+        "isTransparent": true,
+        "displayMode": "adaptive",
+        "locale": "in"
+    }
+    </script>
+</div>
+<!------------------------- STOCK TICKER END --------------------->
+
+<div class="container" style="padding-top:20px;">
+  <!---------------------CAROUSAL---------------------------------->
+  <div class="carousel" style="background-color: azure;margin-top: 20px">
+      <div id="cslide" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+              <ol class="carousel-indicators " style="bottom: -20px">
+                  <li data-target="#cslide" data-slide-to="0" class="active"></li>
+                  <li data-target="#cslide" data-slide-to="1"></li>
+                  <li data-target="#cslide" data-slide-to="2"></li>
+              </ol>
+
+              <div class="carousel-item active text-center p-4">
+                  <h5>
+                      {{desc[1]}}
+                 </h5>
+              </div>
+
+              <div class="carousel-item text-center p-4">
+                  <h5>
+                    {{desc[2]}}
+                  </h5>
+              </div>
+
+              <div class="carousel-item text-center p-4">
+                  <h5>
+                    {{desc[3]}}
+                  </h5>
+              </div>
+          </div>
+          <a target = "_blank" class="carousel-control-prev" href="#cslide" role="button" data-slide="prev" style="left: -65px">
+              <span class="fas fa-chevron-circle-left fa-x" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a target = "_blank" class="carousel-control-next" href="#cslide" role="button" data-slide="next" style="right: -70px">
+              <span class="fas fa-chevron-circle-right fa-x" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+  </div>
+  <!-----------------------CAROUSAL END---------------------------------->
+
+
+  <!-------------------------NEWS-------------------------------->
+  <p><h2 style="text-align: center;margin-bottom: 20px;font-family:OpenSans-SemiBold">TOP STORIES</h2>
+
+  <div class="media position-relative" style="margin-bottom: 20px">
+      <img alt="#1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Un1.svg/180px-Un1.svg.png" width="75" height="60" class="mr-3">
+      <div class="media-body">
+          <h5>
+            {{news[0]}}
+          </h5>
+      </div>
+  </div>
+
+  <div class="media position-relative" style="margin-bottom: 20px">
+      <img alt="#2" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Deux.svg/180px-Deux.svg.png" width="75" height="60" class="mr-3">
+      <div class="media-body">
+          <h5>
+              {{news[1]}}
+          </h5>
+      </div>
+  </div>
+
+  <div class="media position-relative" style="margin-bottom: 20px">
+      <img alt="#3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Trois.svg/180px-Trois.svg.png" width="75" height="60" class="mr-3">
+      <div class="media-body">
+          <h5>
+              {{news[2]}}
+          </h5>
+      </div>
+  </div>
+
+  <div class="media position-relative" style="margin-bottom: 20px">
+      <img alt="#4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Quatre.svg/180px-Quatre.svg.png" width="75" height="60"  class="mr-3">
+      <div class="media-body">
+          <h5>
+             {{news[4]}}
+          </h5>
+      </div>
+  </div>
+
+  <div class="media position-relative" style="margin-bottom: 20px">
+      <img alt="#5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Cinq.svg/180px-Cinq.svg.png" width="75" height="60"  class="mr-3">
+      <div class="media-body">
+          <h5>
+              {{news[5]}}
+          </h5>
+      </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy/Sell
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Trade</th>
+        </tr>
+        </thead>
+        {% for item in data %}
+        <tr>
+        <td>{{item[0]}} ({{item[1]}})</td>
+        <td>₹{{item[2]}}</td>
+        <td>₹{{"%.2f"|format(item[3])}}</td>
+        <td id="form">
+            <form action="{{ url_for('buy') }}" method="post">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" type="hidden" value="{{item[0]}}"/>
+                <button class="btn" type="submit" style="color:white;background:#2dc7b6;margin-right:10px;">Buy</button>
+            </form>
+            <form action="{{ url_for('sell') }}" method="post">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" type="hidden" value="{{item[0]}}"/>
+                <button class="btn" type="submit" style="color:white;background:#fd5d5d;">Sell</button>
+            </form>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

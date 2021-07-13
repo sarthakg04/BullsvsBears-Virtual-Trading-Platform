@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+
+<span id="symbol" style="display:none">{{symbol}}</span>
+<script type="text/javascript">
+    var x = $("#symbol").text();
+    var symbol = "BSE:"+x;
+    var y1 = {"symbol": symbol,"width": 400,"colorTheme": "light","isTransparent": true,"locale": "in"};
+    var json1 = JSON.stringify(y1);
+    var y2 = {"symbol": symbol,"width": 400,"height": 400,"colorTheme": "light","isTransparent": true,"locale": "in"};
+    var json2 = JSON.stringify(y2);
+</script>
+
+
+<div class="widget-container">
+    <div class="row">
+        <div class="col-4">
+            <!--TradingView Widget BEGIN -->
+            <div id="widget1-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script id = "w1" type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+            {"symbol": "BSE:IRCTC","width": 400,"colorTheme": "light","isTransparent": true,"locale": "in"}
+            </script>
+            <script>
+                var w1 = document.getElementById("w1");
+                w1.textContent = json1;
+            </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+            <form action="{{ url_for('buy') }}" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <input autocomplete="off" autofocus class="form-control" name="symbol" type="hidden" value = "{{symbol}}"/>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn" type="submit" style="color: white;background: #2dc7b6;width: 100px;margin-left: 5%;">Buy</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- TradingView Widget BEGIN -->
+            <div id="widget2-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script id = "w2" type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async>
+            {"symbol": "BSE:IRCTC","width": 400,"height": 630,"colorTheme": "light","isTransparent": true,"locale": "in"}
+            </script>
+            <script>
+                var w2 = document.getElementById("w2");
+                w2.textContent = json2;  
+            </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </div>
+
+
+        <div class = "col-8">
+            <!-- TradingView Widget BEGIN -->
+            <div id="tradingview_35bb4"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+                new TradingView.widget(
+                {
+                    "width": 950,
+                    "height": 590,
+                    "symbol": symbol,
+                    "interval": "D",
+                    "timezone": "exchange",
+                    "theme": "light",
+                    "style": "3",
+                    "locale": "in",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "container_id": "tradingview_35bb4"
+                });
+            </script>
+            <!-- TradingView Widget END -->
+        </div>
+    </div>
+</div>
+{% endblock %}

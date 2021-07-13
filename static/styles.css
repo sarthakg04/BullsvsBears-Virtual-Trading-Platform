@@ -1,0 +1,203 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url('fonts/OpenSans/OpenSans-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: OpenSans-ExtraBold;
+    src: url('fonts/OpenSans/OpenSans-ExtraBold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: OpenSans-Bold;
+    src: url('fonts/OpenSans/OpenSans-Bold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: OpenSans-SemiBold;
+    src: url('fonts/OpenSans/OpenSans-SemiBold.ttf'); 
+  }
+body{
+    padding-top: 127px;
+    font-family: OpenSans-Regular !important;
+}
+.container
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.jumbotron.card.card-image{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+nav.navbar.navbar-expand-lg.fixed-top {
+    padding: 0 7rem;
+    background: white;
+}
+.logo{
+    max-width: 100px;
+}
+a.navbar-brand {
+    color: #4e5ec3;
+    font-family: Quicksand;
+    font-size: 2em;
+}
+a.nav-link {
+    color: black;
+    font-family: OpenSans-SemiBold;
+    font-size: 1.2em;
+}
+.userButton{
+    background: transparent;
+    outline: none !important;
+    border: none;
+    height: 45px;
+    text-transform: uppercase;
+    font-family: OpenSans-Semibold;
+    font-size: 1.2em;
+}
+
+.category-nav {
+    display: inline-flex;
+    width: 100%;
+    background: #4e5ec3;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 80px;
+    z-index: 100;
+}
+.category-nav-link {
+    background: none;
+    border: none;
+    outline: none;
+    width: 150px;
+}
+button.category-nav-link:focus {
+    outline: none;
+    border: none;
+}
+.category-nav-link a {
+    color: white;
+    text-decoration: none;
+    font-family: OpenSans-SemiBold;
+}
+.category-nav-link a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+
+main .form-control
+{
+    display: inline-block;
+
+    width: auto;
+}
+
+main img
+{
+    max-width: 100%;
+}
+
+main td
+{
+    
+    text-align: center;
+}
+h5{
+    font-family: "OpenSans-SemiBold";
+    text-align: center;
+}
+h6{
+    font-family: OpenSans-SemiBold;
+    text-align: center;
+}
+/*Style the counter cards*/
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+.card-header{
+    font-family: OpenSans-Bold;
+}
+.card-text{
+    font-family: OpenSans-SemiBold;
+}
+
+.down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid #FD5D5D;
+  padding: 0;
+  margin: 4px 3px;
+  position: absolute;
+}
+.up{
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 12px solid #2DC7B6;
+    padding: 0;
+    margin: 3px 3px;
+    position: absolute;
+}
+
+.widget-container{
+    max-width: 1450px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-top:20px;
+}
+.tradingview-widget-container{
+    position: fixed;
+    top: 140px;
+    background:white;
+    z-index: 100;
+}
+.carousel-control-next,
+.carousel-control-prev{
+    display:block;
+    color:#036!important;
+    margin-left: -.5rem;
+    z-index: 1
+}
+.carousel-control-prev:hover,
+.carousel-control-next:hover{
+  color:black;
+}
+.media-body a:hover,
+.carousel-item a:hover{
+    color: #357ebd!important;
+}
+.carousel-indicators li {
+    width: 5px!important;
+    height: 5px!important;
+    border-radius: 100% !important;
+    background-color: #036!important;
+}
+.buy-container {
+    padding-top: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px; 
+}
+#form{
+    display: flex;
+    justify-content: center;
+}
+
+
+  
+
