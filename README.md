@@ -11,6 +11,11 @@ live market rates and compete with others on a dynamic leader board.
 from top business newspapers and news feeds like boomerang, NYT
 and Financial Express using web scraping.
 
+![image](https://user-images.githubusercontent.com/29622458/125540305-26867797-112b-4d79-92b2-88ca4e3a287d.png)
+![image](https://user-images.githubusercontent.com/29622458/125540343-467f222b-4181-482f-abf3-d3470b43641f.png)
+![image](https://user-images.githubusercontent.com/29622458/125540395-82641df5-cf14-4794-8140-50f566f25601.png)
+
+
 # A project by Sarthak Gupta
 
 # Steps to run-
