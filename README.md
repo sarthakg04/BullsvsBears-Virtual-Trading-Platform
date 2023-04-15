@@ -16,7 +16,7 @@ and Financial Express using web scraping.
 ![image](https://user-images.githubusercontent.com/29622458/125540395-82641df5-cf14-4794-8140-50f566f25601.png)
 
 
-# A project by Sarthak Gupta
+# A project by Sarthak Gupta and Harshita Jaiswani
 
 # Steps to run-
 
